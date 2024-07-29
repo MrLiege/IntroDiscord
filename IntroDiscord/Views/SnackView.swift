@@ -20,6 +20,34 @@ struct SnackView: View {
     }
 }
 
+struct SnackViewModifier: ViewModifier {
+    
+    @Binding var isShowingSnack: Bool
+    
+    let title: String
+    
+    func body(content: Content) -> some View {
+        content.overlay(alignment: .top) {
+            if isShowingSnack {
+                SnackView(text: title)
+                    .transition(.slide)
+            }
+        } .onChange(of: isShowingSnack, perform: { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                withAnimation(.easeIn(duration: 0.4)) {
+                    isShowingSnack = false
+                }
+            }
+        })
+    }
+}
+
+extension View {
+    func snack(isShowingSnack: Binding<Bool>, title: String) -> some View {
+        self .modifier(SnackViewModifier(isShowingSnack: isShowingSnack, title: title))
+    }
+}
+
 #Preview {
-    SnackView(text: "Texts")
+    SnackView(text: "Text")
 }

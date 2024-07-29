@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LogoAndTextsView: View {
-    @ObservedObject var viewModel: ContentViewModel
+    var subText: SubtitleText
     
     var body: some View {
         VStack(spacing: 15) {
@@ -33,7 +33,7 @@ struct LogoAndTextsView: View {
             .multilineTextAlignment(.center)
             .padding(.horizontal, 25)
             
-            Text(viewModel.subtitleText.rawValue)
+            Text(subText.rawValue)
                 .foregroundStyle(.white)
                 .font(.body)
                 .multilineTextAlignment(.center)
@@ -44,5 +44,5 @@ struct LogoAndTextsView: View {
 }
 
 #Preview {
-    LogoAndTextsView(viewModel: ContentViewModel())
+    LogoAndTextsView(subText: SubtitleText.text1)
 }

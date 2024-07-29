@@ -8,21 +8,6 @@
 import Foundation
 import SwiftUI
 
-//struct ButtonModifier: ViewModifier {
-//    var titleColor: Color
-//    var backgroundColor: Color
-//
-//    func body(content: Content) -> some View {
-//        content
-//            .padding()
-//            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 50, maxHeight: 50)
-//            .foregroundColor(titleColor)
-//            .background(backgroundColor)
-//            .clipShape(Capsule())
-//            .padding(.horizontal, 55)
-//    }
-//}
-
 struct RoundedButtonStyle: ButtonStyle {
     var titleColor: Color
     var backgroundColor: Color
